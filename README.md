@@ -1,3 +1,1 @@
 # lenta-frontend
-
-## lenta-frontend

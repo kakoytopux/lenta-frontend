@@ -1,0 +1,35 @@
+// миксина для реализации флекс контейнера
+@mixin flex($direction: false, $justify: false, $align: false, $gap: false) {
+  display: flex;
+
+  @if $direction {
+    flex-direction: $direction;
+  }
+  @if $justify {
+    justify-content: $justify;
+  }
+  @if $align {
+    align-items: $align;
+  }
+  @if $gap {
+    gap: $gap;
+  }
+}
+
+// миксина для настройки шрифта
+@mixin font($size: false, $height: false, $weight: false) {
+  @if $size {
+    font-size: $size;
+  }
+  @if $height {
+    line-height: $height;
+  }
+  @if $weight {
+    font-weight: $weight;
+  }
+}
+
+// переменные с обозначением толщины шрифта
+$weight-regular: 400;
+$weight-medium: 500;
+$weight-bold: 600;
