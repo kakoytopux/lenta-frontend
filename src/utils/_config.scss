@@ -29,7 +29,22 @@
   }
 }
 
+// миксина для обнуления стилей кнопки
+@mixin btn {
+  cursor: pointer;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+
 // переменные с обозначением толщины шрифта
+$weight-light: 300;
 $weight-regular: 400;
 $weight-medium: 500;
-$weight-bold: 600;
+
+
+// переменные с обозначением цвета
+$auth-btn-color: #003C96;
+$black-color: #111;
+$white-color: #fff;
