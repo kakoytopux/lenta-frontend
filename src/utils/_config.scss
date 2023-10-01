@@ -1,3 +1,5 @@
+// миксины
+
 // миксина для реализации флекс контейнера
 @mixin flex($direction: false, $justify: false, $align: false, $gap: false) {
   display: flex;
@@ -37,14 +39,24 @@
   background-color: transparent;
 }
 
+// миксина для обнуления стилей списков
+@mixin lists {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+// переменные
 
 // переменные с обозначением толщины шрифта
 $weight-light: 300;
 $weight-regular: 400;
 $weight-medium: 500;
 
-
 // переменные с обозначением цвета
 $auth-btn-color: #003C96;
 $black-color: #111;
 $white-color: #fff;
+$border-color: #E6E6E6;
+$gray-color: #C4C4C4;

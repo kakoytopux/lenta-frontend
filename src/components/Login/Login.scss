@@ -1,5 +1,11 @@
 @import '../../utils/config';
 
+// миксина для переиспользования свойств текста
+@mixin reuse-text {
+  @include font($size: 20px, $weight: $weight-light, $height: 24px);
+}
+
+
 .login {
   @include flex($direction: column, $align: center, $justify: center);
   height: 100vh;
@@ -25,44 +31,39 @@
   }
 }
 .login-form__label {
-  @include font($size: 20px, $weight: $weight-light, $height: 24px);
+  @include reuse-text;
   color: $black-color;
+  margin-bottom: 8px;
 }
 .login-form__mess-err {
   @include font($size: 18px, $weight: $weight-light, $height: 24px);
   margin: 0;
   color: #BA1B00;
 }
+.login-form__box-field-eye {
+  position: relative;
+}
 .login-form__field {
-  @include font($size: 20px, $weight: $weight-light, $height: 24px);
+  @include reuse-text;
   padding: 0 0 0 20px;
-  border: 1px solid #e6e6e6;
-  height: 60px;
+  border: 1px solid $border-color;
   border-radius: 12px;
+  height: 60px;
   outline: 0;
   color: $black-color;
-  margin-top: 8px;
-  width: 100%;
   box-sizing: border-box;
+  width: 100%;
 }
 .login-form__field_type_err {
   border-color: #FA3A19;
 }
-.login-form__box-field-eye {
-  position: relative;
-  margin-top: 8px;
-
-  .login-form__field {
-    margin-top: 0;
-  }
-}
 .login-form__box-btn-eye {
   @include flex($align: center);
+  height: 100%;
   position: absolute;
   top: 0;
   right: 20px;
   z-index: 1;
-  height: 100%
 }
 .login-form__eye-btn {
   @include btn;
@@ -75,7 +76,7 @@
   background-image: url(../../images/login/eye-hide-icon.svg);
 }
 .login-form__submit {
-  @include font($size: 20px, $weight: $weight-light, $height: 24px);
+  @include reuse-text;
   @include btn;
   color: $white-color;
   background-color: $auth-btn-color;
@@ -85,7 +86,7 @@
   height: 60px;
 
   &:disabled {
-    background-color: #C4C4C4;
+    background-color: $gray-color;
     color: $white-color;
   }
 }
