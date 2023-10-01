@@ -1,0 +1,66 @@
+@import '../../utils/config';
+
+// миксина для переиспользования свойств текста
+@mixin reuse-text {
+  @include font($size: 20px, $weight: $weight-regular, $height: 24px);
+}
+
+
+.header {
+  @include flex($justify: space-between);
+  padding: 0 40px;
+  height: 100px;
+  border: 1px solid $border-color;
+  border-top: 0;
+  border-radius: 0 0 8px 8px;
+}
+.header__box {
+  @include flex($gap: 40px, $align: center);
+}
+.header__logo {
+  background-image: url(../../images/logo.svg);
+  background-size: 100% 100%;
+  width: 125px;
+  height: 29px;
+}
+.header__navigation {
+  padding-top: 6px;
+}
+.header__lists {
+  @include flex($gap: 24px);
+  @include lists;
+}
+.header__list-link {
+  @include reuse-text;
+  text-decoration: none;
+  color: #898989;
+}
+.header__list-link_active {
+  color: $black-color;
+}
+.header__field-search {
+  @include reuse-text;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  width: 440px;
+  height: 52px;
+  padding: 0 0 0 20px;
+  outline: 0;
+  color: $black-color;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: $gray-color;
+    background-image: url(../../images/header/search-icon.svg);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 32px;
+  }
+}
+.header__settings {
+  background-image: url(../../images/header/settings-icon.svg);
+  background-size: 100% 100%;
+  width: 28px;
+  height: 28px;
+}
