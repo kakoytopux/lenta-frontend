@@ -1,0 +1,22 @@
+@import '../../utils/config';
+
+.not-found {
+  @include flex($align: center, $direction: column, $justify: center);
+  height: 100vh;
+}
+.not-found__title {
+  @include font($size: 50px, $height: 60px, $weight: $weight-medium);
+  margin: 0;
+}
+.not-found__subtitle {
+  @include font($size: 18px, $height: 24px, $weight: $weight-light);
+  margin: 5px 0 0 0;
+}
+.not-found__btn {
+  @include btn;
+  @include font($size: 16px, $height: 20px, $weight: $weight-light);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  color: #008080;
+  margin-top: 50px;
+}

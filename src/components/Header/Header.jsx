@@ -1,8 +1,15 @@
 import { Link, NavLink } from 'react-router-dom';
 import './Header.scss';
 import { Input } from 'antd';
+import { useState } from 'react';
 
 export default function Header() {
+  const [searchValueField, setSearchValueField] = useState('');
+
+  function changeFieldSearch(evt) {
+    setSearchValueField(evt.target.value);
+  }
+  
   return (
     <header className='header'>
       <div className='header__box'>
@@ -30,14 +37,16 @@ export default function Header() {
       </div>
       <div className='header__box'>
         <form
-        method='get'
-        className='header__form-search'>
+        method='post'
+        className='header__form'>
           <Input
-          className='header__field-search'
+          className='header__field'
           placeholder='Поиск по ТК, категориям и товарам'
           required
           name='search'
-          type='text' />
+          type='text'
+          onChange={changeFieldSearch}
+          value={searchValueField} />
         </form>
         <Link
         to='/*'

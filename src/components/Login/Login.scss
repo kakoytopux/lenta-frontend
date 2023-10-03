@@ -51,11 +51,17 @@
   height: 60px;
   outline: 0;
   color: $black-color;
-  box-sizing: border-box;
-  width: 100%;
 }
 .login-form__field_type_err {
   border-color: #FA3A19;
+  
+  &:focus {
+    @extend .login-form__field_type_err;
+    box-shadow: none;
+  }
+  &:hover {
+    @extend .login-form__field_type_err;
+  }
 }
 .login-form__box-btn-eye {
   @include flex($align: center);
