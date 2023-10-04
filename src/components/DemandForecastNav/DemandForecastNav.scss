@@ -1,0 +1,31 @@
+@import '../../utils/config';
+
+.demand-forecast-nav {
+  @include flex($align: center, $justify: space-between);
+  margin-top: 60px;
+}
+.demand-forecast-nav__title {
+  @include font($size: 32px, $weight: $weight-medium, $height: 36px);
+  color: $black-color;
+  letter-spacing: -2.5px;
+  margin: 0;
+}
+.demand-forecast-nav__data-update {
+  @include font($size: 18px, $weight: $weight-light, $height: 24px);
+  color: #898989;
+  margin: 8px 0 0 0;
+}
+.demand-forecast-nav__lists {
+  @include lists;
+  @include flex($gap: 24px);
+}
+.demand-forecast-nav__list-link {
+  @include font($size: 20px, $weight: $weight-regular, $height: 24px);
+  color: #898989;
+  text-decoration: none;
+}
+.demand-forecast-nav__list-link_active {
+  color: $black-color;
+  border-bottom: 2px solid $black-color;
+  padding-bottom: 8px;
+}
