@@ -1,13 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Input } from 'antd';
 import './Login.scss';
 import useValidateForm from '../../hooks/useValidateForm';
+import { mainApi } from '../../utils/MainApi';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { authTrue } from '../../store/slices/authSlice';
 
 export default function Login() {
   const [emailValueField, setEmailValueField] = useState('');
   const [passwordValueField, setPasswordValueField] = useState('');
   const [eyePassword, setEyePassword] = useState(false);
-  const { errMessage, checkField, valid } = useValidateForm();
+  const { errMessage, checkField, valid, setErrMessage } = useValidateForm();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   function changeEyePassword() {
     setEyePassword(!eyePassword);
@@ -25,7 +31,26 @@ export default function Login() {
   }
   function onSubmit(evt) {
     evt.preventDefault();
+    setErrMessage({});
+
+    mainApi.authUser(emailValueField, passwordValueField)
+    .then(res => {
+      navigate('/demand-forecast');
+      localStorage.setItem('token', res.auth_token);
+      dispatch(authTrue());
+    })
+    .catch(err => {
+      setErrMessage({ email: 'Неправильный email', password: 'Неправильный пароль' });
+      console.log(err);
+    })
   }
+
+  useEffect(() => {
+    if(localStorage.getItem('token')) {
+      dispatch(authTrue());
+      navigate('/demand-forecast');
+    }
+  }, [dispatch, navigate]);
 
   return (
     <main className='content'>

@@ -1,4 +1,6 @@
+import { Outlet } from 'react-router-dom';
 import Chart from '../Chart/Chart';
+import DemandForecastNav from '../DemandForecastNav/DemandForecastNav';
 import Filter from '../Filters/Filter';
 import Header from '../Header/Header';
 import './DemandForecast.scss';
@@ -8,6 +10,7 @@ export default function DemandForecast() {
     <>
       <Header />
       <main className='content'>
+        <DemandForecastNav />
         <section className='filters'>
           <Filter
           name='Торговые комплексы'
@@ -26,6 +29,7 @@ export default function DemandForecast() {
           placeholder='Поиск по подкатегориям' />
         </section>
         <Chart />
+        <Outlet />
       </main>
     </>
   );

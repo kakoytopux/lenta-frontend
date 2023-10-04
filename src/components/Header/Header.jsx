@@ -45,7 +45,7 @@ export default function Header() {
           value={searchValueField} />
         </form>
         <Link
-        to='/*'
+        to='/settings'
         className='header__settings'></Link>
       </div>
     </header>

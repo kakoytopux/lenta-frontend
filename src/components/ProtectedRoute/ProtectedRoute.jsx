@@ -1,5 +1,8 @@
-// import { Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-// export default function ProtectedRoute(Component, { ...props }) {
-//   return <Component { ...props } /> ?? <Navigate to='login' />;
-// }
+export default function ProtectedRoute({ element: Component, ...props }) {
+  const authSelector = useSelector(state => state.auth.value);
+
+  return authSelector ? <Component { ...props } /> : <Navigate to='/' />;
+}

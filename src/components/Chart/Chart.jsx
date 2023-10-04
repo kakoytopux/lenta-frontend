@@ -21,26 +21,13 @@ export default function Chart() {
     data,
     xField: 'year',
     yField: 'value',
-    label: {},
     point: {
       size: 5,
-      shape: 'diamond',
+      shape: 'circle',
       style: {
-        fill: 'white',
-        stroke: '#5B8FF9',
+        fill: '#FFB900',
+        stroke: '#FFB900',
         lineWidth: 2,
-      },
-    },
-    tooltip: {
-      showMarkers: false,
-    },
-    state: {
-      active: {
-        style: {
-          shadowBlur: 4,
-          stroke: '#000',
-          fill: 'red',
-        },
       },
     },
     interactions: [
@@ -48,6 +35,8 @@ export default function Chart() {
         type: 'marker-active',
       },
     ],
+    colorField: 'type', // or seriesField in some cases
+    color:['#19CDD7','#DDB27C'],
   };
 
   return <Line {...config} />
