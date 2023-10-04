@@ -9,6 +9,9 @@ export default function Header() {
   function changeFieldSearch(evt) {
     setSearchValueField(evt.target.value);
   }
+  function onSubmit(evt) {
+    evt.preventDefault();
+  }
   
   return (
     <header className='header'>
@@ -24,21 +27,14 @@ export default function Header() {
                 Прогноз спроса
               </NavLink>
             </li>
-            <li className='header__list'>
-              <NavLink
-              to='/compare-forecasts'
-              className={({ isActive }) =>
-              `header__list-link ${isActive ? 'header__list-link_active' : ''}`}>
-                Сравнить качество прогнозов
-              </NavLink>
-            </li>
           </ul>
         </nav>
       </div>
       <div className='header__box'>
         <form
         method='post'
-        className='header__form'>
+        className='header__form'
+        onSubmit={onSubmit}>
           <Input
           className='header__field'
           placeholder='Поиск по ТК, категориям и товарам'
