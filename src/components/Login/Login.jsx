@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button } from 'antd';
+import { Button, Input } from 'antd';
 import './Login.scss';
 import useValidateForm from '../../hooks/useValidateForm';
 
@@ -7,7 +7,7 @@ export default function Login() {
   const [emailValueField, setEmailValueField] = useState('');
   const [passwordValueField, setPasswordValueField] = useState('');
   const [eyePassword, setEyePassword] = useState(false);
-  const [ errMessage, checkField, valid ] = useValidateForm();
+  const { errMessage, checkField, valid } = useValidateForm();
 
   function changeEyePassword() {
     setEyePassword(!eyePassword);
@@ -41,7 +41,7 @@ export default function Login() {
             htmlFor='email'
             className='login-form__label'>Email</label>
             <p className='login-form__mess-err'>{ errMessage.email }</p>
-            <input
+            <Input
             type='email'
             id='email'
             required
@@ -57,7 +57,7 @@ export default function Login() {
             className='login-form__label'>Пароль</label>
             <p className='login-form__mess-err'>{ errMessage.password }</p>
             <div className='login-form__box-field-eye'>
-              <input
+              <Input
               type={eyePassword ? 'text' : 'password'}
               id='password'
               required

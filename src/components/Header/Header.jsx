@@ -1,8 +1,18 @@
 import { Link, NavLink } from 'react-router-dom';
 import './Header.scss';
 import { Input } from 'antd';
+import { useState } from 'react';
 
 export default function Header() {
+  const [searchValueField, setSearchValueField] = useState('');
+
+  function changeFieldSearch(evt) {
+    setSearchValueField(evt.target.value);
+  }
+  function onSubmit(evt) {
+    evt.preventDefault();
+  }
+  
   return (
     <header className='header'>
       <div className='header__box'>
@@ -17,27 +27,22 @@ export default function Header() {
                 Прогноз спроса
               </NavLink>
             </li>
-            <li className='header__list'>
-              <NavLink
-              to='/compare-forecasts'
-              className={({ isActive }) =>
-              `header__list-link ${isActive ? 'header__list-link_active' : ''}`}>
-                Сравнить качество прогнозов
-              </NavLink>
-            </li>
           </ul>
         </nav>
       </div>
       <div className='header__box'>
         <form
-        method='get'
-        className='header__form-search'>
+        method='post'
+        className='header__form'
+        onSubmit={onSubmit}>
           <Input
-          className='header__field-search'
+          className='header__field'
           placeholder='Поиск по ТК, категориям и товарам'
           required
           name='search'
-          type='text' />
+          type='text'
+          onChange={changeFieldSearch}
+          value={searchValueField} />
         </form>
         <Link
         to='/*'

@@ -38,7 +38,7 @@
 .header__list-link_active {
   color: $black-color;
 }
-.header__field-search {
+.header__field {
   @include reuse-text;
   border: 1px solid $border-color;
   border-radius: 8px;
@@ -47,7 +47,6 @@
   padding: 0 0 0 20px;
   outline: 0;
   color: $black-color;
-  box-sizing: border-box;
 
   &::placeholder {
     color: $gray-color;

@@ -7,19 +7,27 @@ export default function useValidateForm() {
   function checkField(evt) {
     const elTarget = evt.target;
     const elName = elTarget.name;
+    const validity = elTarget.validity;
 
-    elTarget.validity.patternMismatch ?
-    setErrMessage({ ...errMessage, [elName]: 'Неверный формат email' }) : setErrMessage({...errMessage, [elName]: ''});
-    elTarget.validity.valueMissing &&
+    if(elName === 'email') {
+      validity.patternMismatch &&
+      setErrMessage({ ...errMessage, [elName]: 'Неверный формат email'});
+    }
+
+    validity.valueMissing &&
     setErrMessage({ ...errMessage, [elName]: 'Необходимо заполнить данное поле' });
+
+    if(validity.valid) {
+      setErrMessage({...errMessage, [elName]: ''});
+    }
     
     setValid(elTarget.closest('.form').checkValidity());
   }
 
-  return [
+  return {
     errMessage,
     checkField,
     valid,
     setErrMessage,
-  ];
+  };
 }
