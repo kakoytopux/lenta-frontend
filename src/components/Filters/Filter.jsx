@@ -1,13 +1,12 @@
 import { Input, Checkbox } from 'antd';
 import './Filter.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-export default function Filters({ name, placeholder }) {
+export default function Filters({ name, placeholder, setData }) {
   const [checkboxName, setCheckboxName] = useState(['d', 's', 'r']);
   const [checkedList, setCheckedList] = useState([]);
   const [searchCheckboxName, setSearchCheckboxName] = useState(null);
   const [showColumnFilter, setShowColumnFilter] = useState(true);
-  const CheckboxGroup = Checkbox.Group;
   const indeterminate = checkedList.length > 0 && checkedList.length < checkboxName.length;
   const checkAll = checkboxName.length === checkedList.length;
 
@@ -33,11 +32,15 @@ export default function Filters({ name, placeholder }) {
     setCheckedList(evt.target.checked ? checkboxName : []);
   }
 
+  useEffect(() => {
+    setData(checkedList);
+  }, [checkedList, setData]);
+
   return (
     <article className={`filter ${showColumnFilter ? '' : 'filter_hide'}`}>
-      <h4
+      <h3
       className={`filter__title ${showColumnFilter ? '' : 'filter__title_hide'}`}
-      onClick={changeShowColumnFilter}>{ name }</h4>
+      onClick={changeShowColumnFilter}>{ name }</h3>
       <div className={`filter__container ${showColumnFilter ? '' : 'filter__container_hide'}`}>
         <Input
         className='filter__field'
@@ -52,7 +55,7 @@ export default function Filters({ name, placeholder }) {
           indeterminate={indeterminate}
           onChange={selectAllCheckbox}
           checked={checkAll}>Выбрать всё</Checkbox>
-          <CheckboxGroup
+          <Checkbox.Group
           className='filter__checkbox'
           options={searchCheckboxName || checkboxName}
           value={checkedList}

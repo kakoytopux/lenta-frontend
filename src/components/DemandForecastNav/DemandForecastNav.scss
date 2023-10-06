@@ -23,6 +23,7 @@
   @include font($size: 20px, $weight: $weight-regular, $height: 24px);
   color: #898989;
   text-decoration: none;
+  letter-spacing: -1px;
 }
 .demand-forecast-nav__list-link_active {
   color: $black-color;

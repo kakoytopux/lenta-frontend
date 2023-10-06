@@ -29,14 +29,14 @@ export default function Login() {
 
     setPasswordValueField(evt.target.value);
   }
+  
   function onSubmit(evt) {
     evt.preventDefault();
     setErrMessage({});
 
     mainApi.authUser(emailValueField, passwordValueField)
-    .then(res => {
+    .then(() => {
       navigate('/demand-forecast');
-      localStorage.setItem('token', res.auth_token);
       dispatch(authTrue());
     })
     .catch(err => {
@@ -45,12 +45,14 @@ export default function Login() {
     })
   }
 
-  useEffect(() => {
-    if(localStorage.getItem('token')) {
-      dispatch(authTrue());
-      navigate('/demand-forecast');
-    }
-  }, [dispatch, navigate]);
+  // useEffect(() => {
+  //   mainApi.userMeData()
+  //   .then(() => {
+  //     dispatch(authTrue());
+  //     // navigate('/demand-forecast');
+  //   })
+  //   .catch(err => console.log(err))
+  // }, [dispatch, navigate]);
 
   return (
     <main className='content'>

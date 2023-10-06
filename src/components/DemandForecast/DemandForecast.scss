@@ -1,6 +1,17 @@
 @import '../../utils/config';
 
+.section-box-row {
+  @include flex($gap: 40px);
+  margin-top: 60px;
+}
 .filters {
   @include flex($direction: column, $gap: 20px);
-  margin-top: 60px;
+}
+.chart-none {
+  @include font($size: 20px, $weight: $weight-medium, $height: 24px);
+  max-width: 382px;
+  text-align: center;
+  color: #606060;
+  letter-spacing: -1px;
+  margin: 228px 0 0 369px;
 }

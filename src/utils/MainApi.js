@@ -21,10 +21,20 @@ class MainApi {
     })
     .then(res => this._getResult(res))
   }
+  userMeData() {
+    return fetch(`${this._url}/api/v1/users/me/`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+    })
+    .then(res => this._getResult(res))
+  }
 }
 
 export const mainApi = new MainApi({
-  url: 'http://127.0.0.1:8000/',
+  url: 'http://127.0.0.1:8000',
   headers: {
     'Content-Type': 'application/json',
   },

@@ -1,0 +1,6 @@
+@import '../../utils/config';
+
+.future-forecasts {
+  @include flex($direction: column, $gap: 20px);
+  width: 100%;
+}
