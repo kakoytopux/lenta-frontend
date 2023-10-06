@@ -1,0 +1,48 @@
+@import '../../utils/config';
+
+// миксина для переиспользования свойств текста
+@mixin reuse-text {
+  @include font($size: 20px, $weight: $weight-medium, $height: 24px);
+}
+
+.chart {
+  padding: 40px 60px 52px 60px;
+  border: 1px solid $border-color;
+  border-radius: 12px;
+}
+.chart__product {
+  @include reuse-text;
+  color: $chart-text-color;
+  margin: 0;
+  letter-spacing: -1px;
+}
+.chart__complex {
+  @include reuse-text;
+  color: $chart-text-color;
+  margin: 4px 0 0 0;
+  max-width: 400px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  letter-spacing: -1px;
+}
+.chart__demand {
+  @include font($size: 18px, $weight: $weight-medium, $height: 24px);
+  color: $chart-text-color;
+  margin: 16px 0 40px 0;
+}
+.chart__radio-box {
+  margin-top: 40px;
+
+  .ant-radio-wrapper-checked {
+    border-color: #003C96;
+  }
+}
+.chart__radio {
+  @include font($size: 20px, $weight: $weight-regular, $height: 24px);
+  border: 1px solid $border-color;
+  padding: 16px 20px;
+  letter-spacing: -1px;
+  color: $chart-text-color;
+  border-radius: 8px;
+}

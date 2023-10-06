@@ -4,23 +4,24 @@ import { Line } from '@ant-design/charts';
 export default function Chart() {
   const data = [
     {
-      year: '1991',
+      date: '1991',
       value: 3,
     },
     {
-      year: '1992',
+      date: '1992',
       value: 4,
     },
     {
-      year: '1993',
+      date: '1993',
       value: 3.5,
     },
   ];
   
   const config = {
     data,
-    xField: 'year',
+    xField: 'date',
     yField: 'value',
+    color: '#FFB900',
     point: {
       size: 5,
       shape: 'circle',
@@ -35,9 +36,9 @@ export default function Chart() {
         type: 'marker-active',
       },
     ],
-    colorField: 'type', // or seriesField in some cases
-    color:['#19CDD7','#DDB27C'],
   };
 
-  return <Line {...config} />
+  return (
+    <Line {...config} />
+  );
 }

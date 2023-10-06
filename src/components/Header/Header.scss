@@ -5,7 +5,6 @@
   @include font($size: 20px, $weight: $weight-regular, $height: 24px);
 }
 
-
 .header {
   @include flex($justify: space-between);
   padding: 0 40px;
@@ -35,6 +34,7 @@
   @include reuse-text;
   text-decoration: none;
   color: #898989;
+  letter-spacing: -1px;
 }
 .header__list-link_active {
   color: $black-color;
@@ -56,6 +56,7 @@
     background-repeat: no-repeat;
     background-position: left center;
     padding-left: 32px;
+    letter-spacing: -1px;
   }
 }
 .header__settings {
