@@ -1,10 +1,5 @@
 @import '../../utils/config';
 
-// миксина для переиспользования свойств текста
-@mixin reuse-text {
-  @include font($size: 20px, $weight: $weight-regular, $height: 24px);
-}
-
 .header {
   @include flex($justify: space-between);
   padding: 0 40px;
@@ -31,16 +26,16 @@
   @include lists;
 }
 .header__list-link {
-  @include reuse-text;
+  @include font($size: 20px, $weight: $weight-regular, $height: 24px);
   text-decoration: none;
-  color: #898989;
-  letter-spacing: -1px;
+  color: $gray-color;
+  letter-spacing: $letter-spacing;
 }
 .header__list-link_active {
   color: $black-color;
 }
 .header__field {
-  @include reuse-text;
+  @include font($size: 20px, $weight: $weight-regular, $height: 24px);
   border: 1px solid $border-color;
   border-radius: 8px;
   width: 440px;
@@ -56,7 +51,7 @@
     background-repeat: no-repeat;
     background-position: left center;
     padding-left: 32px;
-    letter-spacing: -1px;
+    letter-spacing: $letter-spacing;
   }
 }
 .header__settings {

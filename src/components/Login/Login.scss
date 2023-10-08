@@ -1,11 +1,5 @@
 @import '../../utils/config';
 
-// миксина для переиспользования свойств текста
-@mixin reuse-text {
-  @include font($size: 20px, $weight: $weight-light, $height: 24px);
-}
-
-
 .login {
   @include flex($direction: column, $align: center, $justify: center);
   height: 100vh;
@@ -31,7 +25,7 @@
   }
 }
 .login-form__label {
-  @include reuse-text;
+  @include font($size: 20px, $weight: $weight-light, $height: 24px);
   color: $black-color;
   margin-bottom: 8px;
 }
@@ -44,7 +38,7 @@
   position: relative;
 }
 .login-form__field {
-  @include reuse-text;
+  @include font($size: 20px, $weight: $weight-light, $height: 24px);
   padding: 0 0 0 20px;
   border: 1px solid $border-color;
   border-radius: 12px;
@@ -82,10 +76,10 @@
   background-image: url(../../images/login/eye-hide-icon.svg);
 }
 .login-form__submit {
-  @include reuse-text;
+  @include font($size: 20px, $weight: $weight-light, $height: 24px);
   @include btn;
   color: $white-color;
-  background-color: $auth-btn-color;
+  background-color: $blue-color;
   border-radius: 12px;
   margin-top: 40px;
   width: 100%;

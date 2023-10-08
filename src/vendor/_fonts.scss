@@ -16,3 +16,9 @@
   url(../../vendor/fonts/geologica/GeologicaCursive-Medium.woff) format('woff');
   font-weight: 500;
 }
+@font-face {
+  font-family: 'Geologica';
+  src: url(../../vendor/fonts/geologica/GeologicaCursive-SemiBold.woff2) format('woff2'),
+  url(../../vendor/fonts/geologica/GeologicaCursive-SemiBold.woff) format('woff');
+  font-weight: 600;
+}

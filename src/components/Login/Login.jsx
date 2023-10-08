@@ -34,8 +34,10 @@ export default function Login() {
     evt.preventDefault();
     setErrMessage({});
 
+
     mainApi.authUser(emailValueField, passwordValueField)
-    .then(() => {
+    .then(res => {
+      localStorage.setItem('token', res.auth_token);
       navigate('/demand-forecast');
       dispatch(authTrue());
     })
@@ -45,14 +47,18 @@ export default function Login() {
     })
   }
 
-  // useEffect(() => {
-  //   mainApi.userMeData()
-  //   .then(() => {
-  //     dispatch(authTrue());
-  //     // navigate('/demand-forecast');
-  //   })
-  //   .catch(err => console.log(err))
-  // }, [dispatch, navigate]);
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    
+    if(token) {
+      mainApi.userMeData(token)
+      .then(() => {
+        dispatch(authTrue());
+        navigate('/demand-forecast');
+      })
+      .catch(err => console.log(err))
+    }
+  }, [dispatch, navigate]);
 
   return (
     <main className='content'>

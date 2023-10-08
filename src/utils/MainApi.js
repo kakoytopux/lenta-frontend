@@ -21,13 +21,23 @@ class MainApi {
     })
     .then(res => this._getResult(res))
   }
-  userMeData() {
+  userMeData(token) {
     return fetch(`${this._url}/api/v1/users/me/`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Token ${token}`,
       },
-      credentials: 'include',
+    })
+    .then(res => this._getResult(res))
+  }
+  productsData(token) {
+    return fetch(`${this._url}/api/v1/products/`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${token}`,
+      },
     })
     .then(res => this._getResult(res))
   }
