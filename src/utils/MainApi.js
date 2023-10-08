@@ -31,8 +31,28 @@ class MainApi {
     })
     .then(res => this._getResult(res))
   }
-  productsData(token) {
+  productData(token) {
     return fetch(`${this._url}/api/v1/products/`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${token}`,
+      },
+    })
+    .then(res => this._getResult(res))
+  }
+  shopData(token) {
+    return fetch(`${this._url}/api/v1/shops/`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${token}`,
+      },
+    })
+    .then(res => this._getResult(res))
+  }
+  forecastData(token, store, date) {
+    return fetch(`${this._url}/api/v1/forecast/?store=${store}&forecast_date=${date}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

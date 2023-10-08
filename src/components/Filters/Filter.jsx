@@ -1,8 +1,10 @@
-import { Input, Checkbox } from 'antd';
+import { Input, Checkbox, Spin } from 'antd';
 import './Filter.scss';
 import { useEffect, useState } from 'react';
+import { FixedSizeList as List } from 'react-window';
+// import AutoSizer from 'react-virtualized-auto-sizer';
 
-export default function Filters({ name, placeholder, setData, data }) {
+export default function Filters({ name, placeholder, setData, data, spin }) {
   const [checkedList, setCheckedList] = useState([]);
   const [searchCheckboxName, setSearchCheckboxName] = useState(null);
   const [showColumnFilter, setShowColumnFilter] = useState(true);
@@ -69,20 +71,33 @@ export default function Filters({ name, placeholder, setData, data }) {
           indeterminate={indeterminate}
           onChange={selectAllCheckbox}
           checked={checkAll}>Выбрать всё</Checkbox>
+          {
+          spin ? <Spin className='filter__spin' />  :
           <Checkbox.Group
-          className='filter__checkbox'
+          className='filter__checkboxes'
           value={checkedList}
           onChange={changeCheckbox}>
-            {
-              chooseData().map((item, index) => 
-                <Checkbox
-                key={index}
-                value={item}>
-                  {item}
-                </Checkbox>
-              )
-            }
+            <List
+            className='filter__list'
+            itemData={chooseData()}
+            itemCount={chooseData().length}
+            itemSize={36}
+            height={200}
+            style={{ overflowX: 'hidden', width: '100%' }}>
+              {({ index, style }) => {
+                return (
+                  <Checkbox
+                  key={index}
+                  className='filter__checkbox'
+                  style={style}
+                  value={chooseData()[index]}>
+                    {chooseData()[index]}
+                  </Checkbox>
+                )
+              }}
+            </List>
           </Checkbox.Group>
+          }
         </div>
       </div>
     </article>

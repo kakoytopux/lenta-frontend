@@ -13,20 +13,35 @@ export default function DemandForecast() {
   const [categoryChecked, setCategoryChecked] = useState([]);
   const [subcategoryChecked, setSubcategoryChecked] = useState([]);
 
+  const [spin, setSpin] = useState(false);
+  const [tk, setTk] = useState([]);
   const [product, setProduct] = useState([]);
   const [group, setGroup] = useState([]);
   const [category, setCategory] = useState([]);
   const [subcategory, setSubcategory] = useState([]);
 
   useEffect(() => {
-    mainApi.productsData(localStorage.getItem('token'))
-    .then(res => {
-      setProduct(res.map(item => item.sku));
-      setGroup(res.map(item => item.group));
-      setCategory(res.map(item => item.category));
-      setSubcategory(res.map(item => item.subcategory));
+    setSpin(true);
+
+    const token = localStorage.getItem('token');
+    
+    Promise.all([
+      mainApi.productData(token),
+      mainApi.shopData(token),
+    ])
+    .then(([productItem, shopItem]) => {
+      productItem.forEach(item => {
+        setProduct(prevState => [...prevState, item.sku]);
+        setGroup(prevState => [...prevState, item.group]);
+        setCategory(prevState => [...prevState, item.category]);
+        setSubcategory(prevState => [...prevState, item.subcategory]);
+      });
+      shopItem.forEach(item => {
+        setTk(prevState => [...prevState, item.store])
+      });
     })
     .catch(err => console.log(err))
+    .finally(() => setSpin(false));
   }, []);
 
   return (
@@ -38,30 +53,36 @@ export default function DemandForecast() {
         productChecked={productChecked} />
         <div className='section-box-row'>
           <section className='filters'>
-            {/* <Filter
+            <Filter
             name='Торговые комплексы'
             placeholder='Поиск по ТК'
-            setData={setComplexChecked} /> */}
+            setData={setComplexChecked}
+            data={tk}
+            spin={spin} />
             <Filter
             name='Товары'
             placeholder='Поиск по товарам'
             setData={setProductChecked}
-            data={product} />
+            data={product}
+            spin={spin} />
             <Filter
             name='Группы'
             placeholder='Поиск по группам'
             setData={setGroupChecked}
-            data={group} />
+            data={group}
+            spin={spin} />
             <Filter
             name='Категории'
             placeholder='Поиск по категориям'
             setData={setCategoryChecked}
-            data={category} />
+            data={category}
+            spin={spin} />
             <Filter
             name='Подкатегории'
             placeholder='Поиск по подкатегориям'
             setData={setSubcategoryChecked}
-            data={subcategory} />
+            data={subcategory}
+            spin={spin} />
           </section>
           {
           complexChecked.length > 0 && productChecked.length > 0 ?
