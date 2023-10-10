@@ -27,7 +27,9 @@
   margin: 16px 0 40px 0;
 }
 .chart__radio-box {
+  @include flex;
   margin-top: 40px;
+  overflow-x: auto;
 
   .ant-radio-wrapper-checked {
     border-color: $blue-color;

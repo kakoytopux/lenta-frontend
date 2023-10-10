@@ -2,7 +2,6 @@ import { Input, Checkbox, Spin } from 'antd';
 import './Filter.scss';
 import { useEffect, useState } from 'react';
 import { FixedSizeList as List } from 'react-window';
-// import AutoSizer from 'react-virtualized-auto-sizer';
 
 export default function Filters({ name, placeholder, setData, data, spin }) {
   const [checkedList, setCheckedList] = useState([]);

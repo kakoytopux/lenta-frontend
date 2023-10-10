@@ -51,8 +51,8 @@ class MainApi {
     })
     .then(res => this._getResult(res))
   }
-  forecastData(token, store, date) {
-    return fetch(`${this._url}/api/v1/forecast/?store=${store}&forecast_date=${date}`, {
+  forecastData(token, store, sku, date) {
+    return fetch(`${this._url}/api/v1/forecast/?store=${store}&sku=${sku}&forecast_date=${date}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

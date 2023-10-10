@@ -1,22 +1,35 @@
+import { useEffect, useState } from 'react';
 import './Chart.scss';
 import { Line } from '@ant-design/charts';
+import { mainApi } from "../../utils/MainApi";
 
-export default function Chart() {
-  const data = [
-    {
-      date: '1991',
-      value: 3,
-    },
-    {
-      date: '1992',
-      value: 4,
-    },
-    {
-      date: '1993',
-      value: 3.5,
-    },
-  ];
-  
+export default function Chart({ product, complex, setSumDemand }) {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    complex.forEach(item => {
+      mainApi.forecastData(localStorage.getItem('token'), item, product, '2023-07-19')
+      .then(res => {
+        let objectArr = [];
+        let sum = 0;
+        const dataArr = res.map(item => item.forecast);
+
+        dataArr.forEach(item => {
+          const values = Object.values(item);
+          values.forEach(item => sum += item);
+
+          Object.keys(item).forEach((key, index) => {
+            objectArr.push({ date: key, value: values[index] });
+          });
+        });
+
+        setData(objectArr);
+        setSumDemand(sum);
+      })
+      .catch(err => console.log(err))
+    })
+  }, [complex, product, setSumDemand]);
+
   const config = {
     data,
     xField: 'date',

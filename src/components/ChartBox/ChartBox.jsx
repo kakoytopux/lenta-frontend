@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './ChartBox.scss';
 import { Radio } from 'antd';
 
-export default function ChartBox({ element: Chart, product, complex, time }) {
+export default function ChartBox({ element: Chart, product, complex, time, sumDemand }) {
   const [radioValue, setRadioValue] = useState('');
 
   function changeRadio(evt) {
@@ -13,7 +13,7 @@ export default function ChartBox({ element: Chart, product, complex, time }) {
     <article className='chart'>
       <h3 className='chart__product'>{product} (шт)</h3>
       <p className='chart__complex'>ТК {complex.join(', ')}</p>
-      <p className='chart__demand'>{time} спрос на 14 дней: 2500 шт.</p>
+      <p className='chart__demand'>{time} спрос на 14 дней: {sumDemand} шт.</p>
       { Chart }
       <Radio.Group
       onChange={changeRadio}

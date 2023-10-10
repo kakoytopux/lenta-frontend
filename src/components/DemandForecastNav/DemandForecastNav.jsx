@@ -2,16 +2,22 @@ import { NavLink } from 'react-router-dom';
 import './DemandForecastNav.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { chartFalse, chartTrue } from '../../store/slices/chartSlice';
+import { useEffect, useState } from 'react';
 
 export default function DemandForecastNav({ complexChecked, productChecked }) {
+  const [time, setTime] = useState('');
   const chartSelector = useSelector(state => state.chart.value);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    setTime(new Date().toLocaleTimeString().slice(0, -3));
+  }, [])
 
   return (
     <section className='demand-forecast-nav'>
       <div className='demand-forecast-nav__box-title'>
         <h2 className='demand-forecast-nav__title'>Прогноз спроса</h2>
-        <p className='demand-forecast-nav__data-update'>Данные обновлены сегодня в 00:00</p>
+        <p className='demand-forecast-nav__data-update'>Данные обновлены сегодня в { time }</p>
       </div>
       <nav className='demand-forecast-nav__navigation'>
         <ul className='demand-forecast-nav__lists'>

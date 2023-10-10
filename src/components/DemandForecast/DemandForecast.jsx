@@ -12,7 +12,6 @@ export default function DemandForecast() {
   const [groupChecked, setGroupChecked] = useState([]);
   const [categoryChecked, setCategoryChecked] = useState([]);
   const [subcategoryChecked, setSubcategoryChecked] = useState([]);
-
   const [spin, setSpin] = useState(false);
   const [tk, setTk] = useState([]);
   const [product, setProduct] = useState([]);
