@@ -1,0 +1,45 @@
+@import '../../utils/config';
+
+.chart {
+  padding: 40px 60px 52px 60px;
+  border: 1px solid $border-color;
+  border-radius: 12px;
+}
+.chart__product {
+  @include font($size: 20px, $weight: $weight-semibold, $height: 24px);
+  color: $black-gray-color;
+  margin: 0;
+  letter-spacing: $letter-spacing;
+}
+.chart__complex {
+  @include font($size: 20px, $weight: $weight-semibold, $height: 24px);
+  color: $black-gray-color;
+  margin: 4px 0 0 0;
+  max-width: 400px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  letter-spacing: $letter-spacing;
+}
+.chart__demand {
+  @include font($size: 18px, $weight: $weight-medium, $height: 24px);
+  color: $black-gray-color;
+  margin: 16px 0 40px 0;
+}
+.chart__radio-box {
+  @include flex;
+  margin-top: 40px;
+  overflow-x: auto;
+
+  .ant-radio-wrapper-checked {
+    border-color: $blue-color;
+  }
+}
+.chart__radio {
+  @include font($size: 20px, $weight: $weight-regular, $height: 24px);
+  border: 1px solid $border-color;
+  padding: 16px 20px;
+  letter-spacing: $letter-spacing;
+  color: $black-gray-color;
+  border-radius: 8px;
+}

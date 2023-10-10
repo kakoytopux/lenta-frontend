@@ -1,0 +1,50 @@
+@import '../../utils/config';
+
+.demand-forecast-nav {
+  @include flex($align: center, $justify: space-between);
+  margin-top: 60px;
+}
+.demand-forecast-nav__title {
+  @include font($size: 32px, $weight: $weight-semibold, $height: 36px);
+  color: $black-color;
+  letter-spacing: -2.5px;
+  margin: 0;
+}
+.demand-forecast-nav__data-update {
+  @include font($size: 18px, $weight: $weight-light, $height: 24px);
+  color: $gray-color;
+  margin: 8px 0 0 0;
+}
+.demand-forecast-nav__lists {
+  @include lists;
+  @include flex($gap: 24px);
+}
+.demand-forecast-nav__list-link {
+  @include font($size: 20px, $weight: $weight-regular, $height: 24px);
+  color: $gray-color;
+  text-decoration: none;
+  letter-spacing: $letter-spacing;
+}
+.demand-forecast-nav__list-link_active {
+  color: $black-color;
+  border-bottom: 2px solid $black-color;
+  padding-bottom: 8px;
+}
+.demand-forecast-nav__type-chart-lists {
+  @include lists;
+  @include flex;
+  background-color: #F2F2F2;
+  border-radius: 8px;
+  padding: 4px;
+}
+.demand-forecast-nav__type-chart-btn {
+  @include btn;
+  @include font($size: 20px, $weight: $weight-light, $height: 24px);
+  letter-spacing: $letter-spacing;
+  color: $black-color;
+  padding: 8px 12px;
+}
+.demand-forecast-nav__type-chart-btn_active {
+  background-color: $white-color;
+  border-radius: 8px;
+}
