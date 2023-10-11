@@ -33,7 +33,7 @@ export default function Login() {
   function onSubmit(evt) {
     evt.preventDefault();
     setErrMessage({});
-
+    navigate('/demand-forecast');
 
     mainApi.authUser(emailValueField, passwordValueField)
     .then(res => {
