@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Button, Input } from 'antd';
-import './Login.scss';
+import styles from './Login.module.scss';
 import useValidateForm from '../../hooks/useValidateForm';
 import { mainApi } from '../../utils/MainApi';
 import { useNavigate } from 'react-router-dom';
@@ -33,7 +33,6 @@ export default function Login() {
   function onSubmit(evt) {
     evt.preventDefault();
     setErrMessage({});
-    navigate('/demand-forecast');
 
     mainApi.authUser(emailValueField, passwordValueField)
     .then(res => {
@@ -61,47 +60,47 @@ export default function Login() {
   }, [dispatch, navigate]);
 
   return (
-    <main className='content'>
-      <section className='login'>
-        <h1 className='login__title'>Войти в аккаунт</h1>
+    <main className={styles.content}>
+      <section className={styles.login}>
+        <h1 className={styles.login__title}>Войти в аккаунт</h1>
         <form
         method='post'
-        className='login-form form'
+        className={`${styles['login-form']} form`}
         noValidate
         onSubmit={onSubmit}>
-          <div className='login-form__box'>
+          <div className={styles['login-form__box']}>
             <label
             htmlFor='email'
-            className='login-form__label'>Email</label>
-            <p className='login-form__mess-err'>{ errMessage.email }</p>
+            className={styles['login-form__label']}>Email</label>
+            <p className={styles['login-form__mess-err']}>{ errMessage.email }</p>
             <Input
             type='email'
             id='email'
             required
-            className={`login-form__field ${errMessage.email ? 'login-form__field_type_err' : ''}`}
+            className={`${styles['login-form__field']} ${errMessage.email ? styles['login-form__field_type_err'] : ''}`}
             name='email'
             pattern='[^@\s]+@[^@\s]+\.[^@\s]+'
             onChange={changeFieldEmail}
             value={emailValueField} />
           </div>
-          <div className='login-form__box'>
+          <div className={styles['login-form__box']}>
             <label
             htmlFor='password'
-            className='login-form__label'>Пароль</label>
-            <p className='login-form__mess-err'>{ errMessage.password }</p>
-            <div className='login-form__box-field-eye'>
+            className={styles['login-form__label']}>Пароль</label>
+            <p className={styles['login-form__mess-err']}>{ errMessage.password }</p>
+            <div className={styles['login-form__box-field-eye']}>
               <Input
               type={eyePassword ? 'text' : 'password'}
               id='password'
               required
-              className={`login-form__field ${errMessage.password ? 'login-form__field_type_err' : ''}`}
+              className={`${styles['login-form__field']} ${errMessage.password ? styles['login-form__field_type_err'] : ''}`}
               name='password'
               onChange={changeFieldPassword}
               value={passwordValueField} />
-              <div className='login-form__box-btn-eye'>
+              <div className={styles['login-form__box-btn-eye']}>
                 <button
                 type='button'
-                className={`login-form__eye-btn ${eyePassword ? 'login-form__eye-btn_type_show' : '' }`}
+                className={`${styles['login-form__eye-btn']} ${eyePassword ? styles['login-form__eye-btn_type_show'] : '' }`}
                 onClick={changeEyePassword}></button>
               </div>
             </div>
@@ -109,7 +108,7 @@ export default function Login() {
           <Button
           type='primary'
           htmlType='submit'
-          className='login-form__submit'
+          className={styles['login-form__submit']}
           disabled={!valid}>Войти</Button>
         </form>
       </section>

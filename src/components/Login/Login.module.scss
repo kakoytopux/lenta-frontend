@@ -9,8 +9,8 @@
   margin: 0;
   text-align: center;
   letter-spacing: -2.5px;
+  color: $black-color;
 }
-
 .login-form {
   margin-top: 60px;
   max-width: 480px;
@@ -27,7 +27,6 @@
 .login-form__label {
   @include font($size: 20px, $weight: $weight-light, $height: 24px);
   color: $black-color;
-  margin-bottom: 8px;
 }
 .login-form__mess-err {
   @include font($size: 18px, $weight: $weight-light, $height: 24px);
@@ -36,6 +35,11 @@
 }
 .login-form__box-field-eye {
   position: relative;
+  margin-top: 8px;
+
+  .login-form__field {
+    margin-top: 0;
+  }
 }
 .login-form__field {
   @include font($size: 20px, $weight: $weight-light, $height: 24px);
@@ -45,6 +49,7 @@
   height: 60px;
   outline: 0;
   color: $black-color;
+  margin-top: 8px;
 }
 .login-form__field_type_err {
   border-color: #FA3A19;

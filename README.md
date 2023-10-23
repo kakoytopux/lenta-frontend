@@ -23,7 +23,7 @@
 - react-window
 - vite
 
-## Ссылки на сторонние фреймворки, библиотеки, иконки и шрифты если использовались
+## Ссылки на сторонние фреймворки, библиотеки, иконки и шрифты
 - react-window: https://www.npmjs.com/package/react-window
 - AntDesign: https://ant.design/
 - AntDesignCharts: https://ant-design-charts.antgroup.com/

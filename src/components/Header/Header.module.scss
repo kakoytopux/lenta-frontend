@@ -1,6 +1,9 @@
 @import '../../utils/config';
 
 .header {
+  padding: 0 60px;
+}
+.header__container {
   @include flex($justify: space-between);
   padding: 0 40px;
   height: 100px;
@@ -43,6 +46,8 @@
   padding: 0 0 0 20px;
   outline: 0;
   color: $black-color;
+  letter-spacing: $letter-spacing;
+  font-family: 'Geologica', Tahoma, sans-serif;
 
   &::placeholder {
     color: $gray-color;
@@ -50,8 +55,8 @@
     background-size: 20px 20px;
     background-repeat: no-repeat;
     background-position: left center;
+    opacity: .5;
     padding-left: 32px;
-    letter-spacing: $letter-spacing;
   }
 }
 .header__settings {

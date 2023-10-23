@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import DemandForecastNav from '../DemandForecastNav/DemandForecastNav';
 import Filter from '../Filters/Filter';
 import Header from '../Header/Header';
-import './DemandForecast.scss';
+import styles from './DemandForecast.module.scss';
 import { useState, useEffect } from 'react';
 import { mainApi } from '../../utils/MainApi';
 
@@ -36,7 +36,7 @@ export default function DemandForecast() {
         setSubcategory(prevState => [...prevState, item.subcategory]);
       });
       shopItem.forEach(item => {
-        setTk(prevState => [...prevState, item.store])
+        setTk(prevState => [...prevState, item.store]);
       });
     })
     .catch(err => console.log(err))
@@ -46,12 +46,12 @@ export default function DemandForecast() {
   return (
     <>
       <Header />
-      <main className='content'>
+      <main className={styles.content}>
         <DemandForecastNav
         complexChecked={complexChecked}
         productChecked={productChecked} />
-        <div className='section-box-row'>
-          <section className='filters'>
+        <div className={styles['section-box-row']}>
+          <section className={styles.filters}>
             <Filter
             name='Торговые комплексы'
             placeholder='Поиск по ТК'
@@ -87,7 +87,7 @@ export default function DemandForecast() {
           complexChecked.length > 0 && productChecked.length > 0 ?
           <Outlet context={[ productChecked, complexChecked ]} />
           :
-          <p className='chart-none'>
+          <p className={styles['chart-none']}>
             Выберете торговый комплекс и товар чтобы перейти к прогнозу
           </p>
           }

@@ -1,7 +1,6 @@
 class MainApi {
-  constructor({ url, headers }) {
+  constructor({ url }) {
     this._url = url;
-    this._headers = headers;
   }
   _getResult(res) {
     if(!res.ok) {
@@ -13,7 +12,9 @@ class MainApi {
   authUser(email, password) {
     return fetch(`${this._url}/api/v1/auth/token/login`, {
       method: 'POST',
-      headers: this._headers,
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         email: email,
         password: password,
@@ -65,7 +66,4 @@ class MainApi {
 
 export const mainApi = new MainApi({
   url: 'http://127.0.0.1:8000',
-  headers: {
-    'Content-Type': 'application/json',
-  },
 });

@@ -1,5 +1,8 @@
 @import '../../utils/config';
 
+.content {
+  padding: 0 60px;
+}
 .section-box-row {
   @include flex($gap: 40px);
   margin-top: 60px;
